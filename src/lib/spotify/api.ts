@@ -2,6 +2,11 @@
 
 import { getAccessToken } from "./auth";
 
+/**
+ * Fetches a random set of metal albums from Spotify.
+ * @param count
+ * @returns
+ */
 export async function getRandomMetalAlbums(count = 2) {
   const token = await getAccessToken();
 
@@ -32,7 +37,7 @@ export async function getRandomMetalAlbums(count = 2) {
   return selected.map((album: any) => ({
     name: album.name,
     artist: album.artists[0].name,
-    image: album.images[0]?.url ?? null,
+    imageUrl: album.images[0]?.url ?? null,
     id: album.id,
   }));
 }
