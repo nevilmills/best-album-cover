@@ -1,3 +1,5 @@
+"use server";
+
 import { spotifyIds } from "../constants";
 import { getAccessToken } from "./auth";
 
