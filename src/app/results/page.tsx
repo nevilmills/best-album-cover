@@ -73,7 +73,7 @@ export const Page: React.FC<PageProps> = async ({}) => {
         </div>
 
         {/* Leaderboard Container */}
-        <Leaderboard initialAlbums={albums} />
+        <Leaderboard initialAlbums={albums.slice(0, 10)} />
 
         {/* Footer */}
         <div className="text-center mt-8">

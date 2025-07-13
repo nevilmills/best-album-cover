@@ -17,7 +17,14 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ initialAlbums }) => {
     // Logic to fetch the next page of albums
     const data = await selectAlbumsByVotes(page + 1); // Example: Fetch next page
     setPage(page + 1);
-    setAlbums(data);
+    setAlbums(data.slice(0, 10));
+  };
+
+  const onPreviousPage = async () => {
+    if (page <= 1) return; // Prevent going to a page less than 1
+    const data = await selectAlbumsByVotes(page - 1); // Example: Fetch previous page
+    setPage(page - 1);
+    setAlbums(data.slice(0, 10));
   };
 
   return (
@@ -44,9 +51,26 @@ export const Leaderboard: React.FC<LeaderboardProps> = ({ initialAlbums }) => {
       </div>
       <div className="px-6 py-4 border-t bg-muted/20">
         <div className="flex items-center justify-center">
-          <Button variant="outline" size="sm" onClick={onNextPage}>
-            Next Page
-          </Button>
+          <div className="flex flex-row items-center space-x-2">
+            {page === 1 ? (
+              <Button variant="outline" size="sm" onClick={onNextPage}>
+                Next Page
+              </Button>
+            ) : page > 1 && albums.length === 11 ? (
+              <>
+                <Button variant="outline" size="sm" onClick={onPreviousPage}>
+                  Previous Page
+                </Button>
+                <Button variant="outline" size="sm" onClick={onNextPage}>
+                  Next Page
+                </Button>
+              </>
+            ) : (
+              <Button variant="outline" size="sm" onClick={onPreviousPage}>
+                Previous Page
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </div>

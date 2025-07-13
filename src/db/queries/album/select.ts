@@ -11,7 +11,7 @@ export const selectAlbumsByVotes = async (page: number) => {
     .select()
     .from(albumTable)
     .orderBy(desc(albumTable.votes))
-    .limit(10)
+    .limit(11)
     .offset(offset);
 
   return data;
