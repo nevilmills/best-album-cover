@@ -38,7 +38,10 @@ export default async function Home() {
             Github
           </a>
           <span className="text-muted-foreground">|</span>
-          <a href="" className="text-muted-foreground hover:text-foreground">
+          <a
+            href="/results"
+            className="text-muted-foreground hover:text-foreground"
+          >
             Results
           </a>
         </div>
