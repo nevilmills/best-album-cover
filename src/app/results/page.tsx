@@ -1,3 +1,4 @@
+import { Leaderboard } from "@/components/leaderboard";
 import { LeaderboardRow } from "@/components/leaderboard-row";
 import { selectAlbumsByVotes } from "@/db/queries/album/select";
 import React from "react";
@@ -72,24 +73,7 @@ export const Page: React.FC<PageProps> = async ({}) => {
         </div>
 
         {/* Leaderboard Container */}
-        <div className="bg-card border rounded-lg shadow-sm overflow-hidden">
-          {/* Table Header */}
-          <div className="bg-muted/50 px-6 py-4 border-b">
-            <div className="grid grid-cols-12 gap-4 items-center font-semibold text-sm text-muted-foreground uppercase tracking-wide">
-              <div className="col-span-1">Rank</div>
-              <div className="col-span-2">Cover</div>
-              <div className="col-span-6">Album</div>
-              <div className="col-span-3 text-right">Votes</div>
-            </div>
-          </div>
-
-          {/* Leaderboard Rows */}
-          <div className="divide-y">
-            {albums.map((item, index) => (
-              <LeaderboardRow album={item} index={index + 1} key={item.id} />
-            ))}
-          </div>
-        </div>
+        <Leaderboard initialAlbums={albums} />
 
         {/* Footer */}
         <div className="text-center mt-8">
